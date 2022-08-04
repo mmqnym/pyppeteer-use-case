@@ -7,11 +7,13 @@ async def normal() -> None:
     ''' Normal case. '''
 
     # It is recommended to use the latest version of chromium browser.
-    browser = await launch(headless = False,
-                           # defaultViewport = None,
-                           # executablePath = f'{os.getcwd()}\chromium\chrome.exe',
-                           args = ['--start-maximized', '--no-sandbox', '--disable-infobars'],
-                           autoClose = False)
+    browser = await launch(
+                    headless = False,
+                    # defaultViewport = None,
+                    # executablePath = f'{os.getcwd()}\chromium\chrome.exe',
+                    args = ['--start-maximized', '--no-sandbox', '--disable-infobars'],
+                    autoClose = False
+    )
     page = await browser.newPage()
 
     # It can use `defaultViewport = None` to always get maximized page viewport.
@@ -19,8 +21,10 @@ async def normal() -> None:
 
     # These block for anti-bot.
     await page.evaluateOnNewDocument('delete navigator.__proto__.webdriver ;')
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
-                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36' )
+    await page.setUserAgent(
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
+        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'
+    )
     await stealth(page)
     
     await page.goto('http://example.com')
