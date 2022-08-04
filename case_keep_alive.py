@@ -23,16 +23,20 @@ class Tracker:
         # if
 
         # It is recommended to use the latest version of chromium browser.
-        self._browser = await launch(headless = True,
-                                     # executablePath = f'{os.getcwd()}\chromium\chrome.exe',
-                                     args = ['--start-maximized', '--no-sandbox', '--disable-infobars'],
-                                     autoClose = False )
+        self._browser = await launch(
+                            headless = True,
+                            # executablePath = f'{os.getcwd()}\chromium\chrome.exe',
+                            args = ['--start-maximized', '--no-sandbox', '--disable-infobars'],
+                            autoClose = False 
+        )
 
         self._page = await self._browser.newPage()
         await self._page.setViewport({'width': 2048, 'height': 1080})
         await self._page.evaluateOnNewDocument( 'delete navigator.__proto__.webdriver ;' )
-        await self._page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
-                                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36' )
+        await self._page.setUserAgent(
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
+            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'
+        )
         await stealth(self._page)
         self._browser_is_running = True
     # launch_browser()
