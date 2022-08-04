@@ -45,7 +45,7 @@ class Tracker:
 
     async def close_browser(self) -> None:
         if not self._browser_is_running:
-            self._logger.warning('Browser 已處於未啟用狀態。')
+            self._logger.warning('Browser is closing.')
             return
         # if
 
