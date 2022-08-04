@@ -13,7 +13,7 @@ async def normal() -> None:
                     # executablePath = f'{os.getcwd()}\chromium\chrome.exe',
                     args = ['--start-maximized', '--no-sandbox', '--disable-infobars'],
                     autoClose = False
-    )
+              )
     page = await browser.newPage()
 
     # It can use `defaultViewport = None` to always get maximized page viewport.
