@@ -28,7 +28,7 @@ class Tracker:
                             # executablePath = f'{os.getcwd()}\chromium\chrome.exe',
                             args = ['--start-maximized', '--no-sandbox', '--disable-infobars'],
                             autoClose = False 
-        )
+                        )
 
         self._page = await self._browser.newPage()
         await self._page.setViewport({'width': 2048, 'height': 1080})
